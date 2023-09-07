@@ -1,0 +1,9 @@
+<ul class="list-group">
+    <li class="list-group-item">Ürünler</li>
+    <li class="list-group-item">Kategoriler
+      <ul *ngFor ="let category of categories">
+        <li>{{category.categoryName}}</li>
+      </ul>
+    </li>
+    <li class="list-group-item">Deneme</li>
+  </ul>

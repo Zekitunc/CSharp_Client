@@ -1,0 +1,82 @@
+notları tutuyoruz bak şimdi basit
+package json ne yapar node modulelerin listesini tutar
+componentler app içindedir
+react aksine burada yönetim component üzerinde yapılır @Component deyince attribute oluyor yani classın ama sen
+componentsin vs. gibi [component] gibi 
+
+component.ts ile component.html birbirine bağımlıdır template kısmında görüldüğü gibi component.ts içinde
+
+string title ın karşılığı title:string = " bişey" typescript
+
+<ul>
+  <li *ngFor =" "></li>
+</ul>
+ ilgili elementi manipüle eder ve satırı tekrarlar
+
+ *ngFor ="let product of products" foreach veya map()
+ built-in angular ile gelen
+
+ ng g component product component oluşturur
+ npm start ile başlar 
+ npm init @angular myApp
+
+ component eklersen app.module direkt olarak ekler çünkü HİYERARŞİ HERŞEYDİR
+ index html sana route yapısını daha sonra ise main ts ise hangi modül ile uygulamayı başlatırsa odur
+
+ <app-product></app-product> component kullanımı
+
+ bootstrap kurdun sonra angular.json bul bu startup gibidir  npm i bootstrap
+ "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+ ee api çekicez yanlış olmasın diye client model kullanırız models klasörü yani
+
+ çekilen api için entityresponsemodel ayrıca mesajlar için response model yaparız extends ile de entityresponsemodel
+ üzerine aktarırız
+
+ ng init var implement edip yazabilirsin bu çalışır her zaman 
+ construct a yazma ayıpmış
+
+ çekmek için import {HttpClient} from '@angular/common/http'
+ react içinde ise axios veya fetch 
+ bu http construct içine yazılıp
+
+    getProducts(sayı:number){
+     this.httpClient.get<ProudctResponseModel>(this.apiUrl);
+   } 
+   fakat çalışmaz çünkü asenkron çalışma durumu var ve observer lazım böyle
+           getProducts(){
+     this.httpClient.get<ProudctResponseModel>(this.apiUrl).subscribe((response) =>
+     {
+      this.productResponseModel.data = response.data;
+      this.productResponseModel.message = response.message;
+      this.productResponseModel.success = response.success;
+     }
+     );
+   } 
+
+   http için provider yok diyecek o zaman nolcak appmodule içine girip ekliycen
+   üstten import alttan ise importa ekliycen provider 
+   CORS farklı bir originden api gelmesi demektir
+
+   bunun için webapi program cs içi en alta app.UseCors("corsapp"); bu
+
+   builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+})); üste de bu
+
+
+ng g service product servis enjektesi vs. neden var bu çünkü çekme vs işlemi html ts için yapılmaz
+ama serviste  
+    getProducts(){
+      this.httpClient.get<ProudctResponseModel>(this.apiUrl);
+    }  kod bu kadar
+
+
+       getProducts(){
+     this.productService.getProducts().subscribe(response =>{this.products = response.data})
+   }  asenkronun en kolay çözüldüpü frame angular denir
+
+veri ve veri akışını yöneten en iyisi angular
+asenkron olayında da önce başlar sonra metod biter sonra ise api biter yani 123 değil 132 gider ASENKRON
+.subscribe asenkron çalışır metod biter sonra biter
